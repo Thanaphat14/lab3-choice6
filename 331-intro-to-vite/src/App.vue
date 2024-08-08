@@ -1,65 +1,72 @@
 <script setup lang="ts">
-import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
-import { ref, watch } from 'vue'
-
-const route = useRoute()
-const router = useRouter()
-
-const pageSize = ref(route.query.pageSize || 2)
-
-watch(pageSize, (newSize) => {
-  router.push({ query: { ...route.query, pageSize: newSize } })
-})
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div id="layout">
-    <header>
-      <div class="wrapper">
-        <nav>
-          <RouterLink :to="{ name: 'event-list-view' }">Home</RouterLink> |
-          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink :to="{ name: 'student' }">Student</RouterLink>
-        </nav>
-        <div>
-          <label for="pageSize">Page Size:</label>
-          <select id="pageSize" v-model="pageSize">
-            <option :value="2">2</option>
-            <option :value="5">5</option>
-            <option :value="10">10</option>
-          </select>
-        </div>
-      </div>
-    </header>
-    <RouterView />
-  </div>
+  <RouterView />
 </template>
 
-<style>
-#layout {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
 }
 
 nav {
-  padding: 30px;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
 }
 
 nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
   border: 0;
 }
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-h2 {
-  font-size: 20px;
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+    width: auto;
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
+
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
 }
 </style>

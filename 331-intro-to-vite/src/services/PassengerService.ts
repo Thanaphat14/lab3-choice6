@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/JJKung07/Compo-Lab2-db-student',
+  baseURL: 'https://api.instantwebtools.net/v1',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -10,7 +10,7 @@ const apiClient = axios.create({
 })
 
 export default {
-  getEvents() {
-    return apiClient.get('/students')
+  getPassengers() {
+    return apiClient.get('/passenger?page=0&size=10')
   }
 }
