@@ -4,7 +4,14 @@ import 'nprogress/nprogress.css'
 </script>
 
 <template>
-  <RouterView />
+  <div id="layout">
+    <header>
+      <div class="wrapper">
+      </div>
+    </header>
+
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
@@ -32,12 +39,19 @@ nav {
   margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+nav {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 
 nav a {
@@ -75,6 +89,20 @@ nav a:first-of-type {
 
     padding: 1rem 0;
     margin-top: 1rem;
+  }
+
+  @keyframes yellofade {
+    from {
+      background-color: yellow;
+    }
+
+    to {
+      background-color: transparent;
+    }
+  }
+
+  #flashMessage {
+    animation: yellofade 3s ease-in-out;
   }
 }
 </style>

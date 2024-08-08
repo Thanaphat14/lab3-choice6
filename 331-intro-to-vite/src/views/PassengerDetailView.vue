@@ -28,7 +28,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="events">
+  <div>
     <div v-if="error" class="error-message">
       <h2>{{ error }}</h2>
       <router-link to="/">Go to Home</router-link>
@@ -64,25 +64,52 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.events {
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
 }
-.pagination {
-  display: flex;
-  width: 290px;
+
+.navigation {
+  text-align: center;
+  margin-bottom: 1rem;
 }
-.pagination a {
-  flex: 1;
-  text-decoration: none;
+
+.navigation a {
+  padding: 0 1rem;
+  font-weight: bold;
   color: #2c3e50;
 }
-#page-prev {
-  text-align: left;
+
+.navigation a.router-link-exact-active {
+  color: #42b983;
 }
-#page-next {
-  text-align: right;
+
+.personal-info,
+.airline-info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.airline {
+  margin-bottom: 1rem;
+}
+
+.airline img {
+  max-width: 100px;
+  display: block;
+  margin: 0.5rem auto;
+}
+
+@media (min-width: 1024px) {
+  #app {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
 }
 </style>
