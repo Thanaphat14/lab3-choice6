@@ -17,10 +17,10 @@ onMounted(async () => {
 
 <template>
   <div class="events">
-  <div v-for="passenger in passengers" :key="passenger._id">
-    <PassengerCard :passenger="passenger" />
+    <div v-for="passenger in passengers" :key="passenger._id">
+      <PassengerCard :passenger="passenger" />
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped>
